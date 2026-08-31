@@ -3,6 +3,6 @@ Class Project
 
 Group 10 
 
-Booking Software with AI bots and Gamified Rewards System
+Booking Software with AI Bot and Gamified Rewards System
 
 Berryl-Lydia Ndzishangong, Lucia Cardenas, Brandon Miranda 
