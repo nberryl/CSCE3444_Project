@@ -1,2 +1,2 @@
-# CSCE3444_Project
+# Group10_CSCE3444-FA26
 Booking Software 
