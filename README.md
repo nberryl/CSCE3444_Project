@@ -7,8 +7,10 @@ Booking Software with AI Bot and Gamified Rewards System
 
 Berryl-Lydia Ndzishangong, Lucia Cardenas, Brandon Miranda 
 
-Git Master:
-Organizer:
-Lead Tester:
+Git Master:Berryl-Lydia Ndzishangong
+
+Organizer:Brandon Miranda
+
+Lead Tester:Lucia Cardenas
 
 
