@@ -7,10 +7,15 @@ Booking Software with AI Bot and Gamified Rewards System
 
 Berryl-Lydia Ndzishangong, Lucia Cardenas, Brandon Miranda 
 
-Git Master:Berryl-Lydia Ndzishangong
+This Project is currently under development
 
-Organizer:Brandon Miranda
+Our Team Roles consist of:
 
-Lead Tester:Lucia Cardenas
+Git Master: Berryl-Lydia Ndzishangong
+
+Organizer: Brandon Miranda
+
+Lead Tester: Lucia Cardenas
+
 
 
