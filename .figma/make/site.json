@@ -1,0 +1,10 @@
+{
+  "description": "Proxicut is a comprehensive hair service platform for all genders and ages, offering user-friendly booking, personalized rewards, and location-based service discovery.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
