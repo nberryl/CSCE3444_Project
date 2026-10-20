@@ -1,0 +1,52 @@
+jsx
+import { useState } from "react";
+
+const SERVICES = ["Silk Press", "Braids", "Color", "Wash & Style"];
+const TIME_SLOTS = ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"];
+
+export default function BookingForm() {
+  const [service, setService] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [confirmed, setConfirmed] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // TODO: save the appointment to the database
+    setConfirmed(true);
+  };
+
+  if (confirmed) {
+    return (
+      <div>
+        <h2>Booking Summary</h2>
+        <p>{service} on {date} at {time}</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>Book an Appointment</h2>
+
+      <select value={service} onChange={(e) => setService(e.target.value)} required>
+        <option value="">Select a service</option>
+        {SERVICES.map((s) => <option key={s}>{s}</option>)}
+      </select>
+
+      <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+
+      <div>
+        {TIME_SLOTS.map((t) => (
+          <button type="button" key={t} onClick={() => setTime(t)}>
+            {t}
+          </button>
+        ))}
+      </div>
+
+      <button type="submit" disabled={!service || !date || !time}>
+        Confirm Booking
+      </button>
+    </form>
+  );
+}
