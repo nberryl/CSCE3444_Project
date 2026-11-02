@@ -17,6 +17,8 @@ Organizer: Brandon Miranda
 
 Lead Tester: Lucia Cardenas
 
+--Deployed URL--
+https://proxicut-deployment-gn4n.vercel.app/
 
 ---------------------------------
 ## HOW TO RUN LOCALHOST
