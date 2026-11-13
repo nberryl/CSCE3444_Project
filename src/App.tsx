@@ -1,6 +1,9 @@
 import { useState, type FormEvent, type ReactNode } from "react";
+import UserAuth from "./components/UserAuth";  // import UserAuth feature
+import ProfileCustomization from "./components/ProfileCustomization";  // import Profile Customization feature
+import AppointmentReminders from "./components/AppointmentReminders";  //import appointmentReminder feature
 
-type Page = "home" | "booking" | "rewards" | "nearby" | "handoff";
+type Page = "home" | "booking" | "rewards" | "nearby" | "handoff" | "account" | "profile" | "reminders";     //updated to include aaccount, profile, and reminders
 type Role = "Client" | "Stylist";
 
 const heroImage =
@@ -291,9 +294,64 @@ function Footer({ navigate }: { navigate: (page: Page) => void }) {
   return <footer className="border-t border-zinc-200 bg-white px-5 py-10 lg:px-8"><div className="mx-auto flex max-w-7xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><Brand onClick={() => navigate("home")} /><p className="text-sm text-zinc-500">Inclusive care. Better hair days. Built for everyone.</p><button onClick={() => navigate("handoff")} className="text-sm font-bold text-violet-700">Developer handoff</button></div></footer>;
 }
 
+
 export default function App() {
   const [page, setPage] = useState<Page>("home");
   const [loginRole, setLoginRole] = useState<Role | null>(null);
-  const navigate = (next: Page) => { setPage(next); window.scrollTo({ top: 0, behavior: "smooth" }); };
-  return <div className="min-h-screen bg-[#fbfaf6] text-zinc-950"><Header page={page} navigate={navigate} onLogin={setLoginRole} />{page === "home" && <Home navigate={navigate} />}{page === "booking" && <Booking />}{page === "rewards" && <Rewards />}{page === "nearby" && <Nearby navigate={navigate} />}{page === "handoff" && <Handoff />}<Footer navigate={navigate} />{loginRole && <LoginModal initialRole={loginRole} onClose={() => setLoginRole(null)} />}</div>;
+
+  // Changes the page when a navigation button is clicked
+  const navigate = (next: Page) => {
+    setPage(next);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Opens the new account page for clients
+  const openLogin = (role: Role) => {
+    if (role === "Client") {
+      navigate("account");
+    } else {
+      setLoginRole(role);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#fbfaf6] text-zinc-950">
+      <Header page={page} navigate={navigate} onLogin={openLogin} />
+
+      {/* Existing team pages */}
+      {page === "home" && <Home navigate={navigate} />}
+      {page === "booking" && <Booking />}
+      {page === "rewards" && <Rewards />}
+      {page === "nearby" && <Nearby navigate={navigate} />}
+      {page === "handoff" && <Handoff />}
+
+      {/* Your three new components */}
+      {page === "account" && <UserAuth />}
+      {page === "profile" && <ProfileCustomization />}
+      {page === "reminders" && <AppointmentReminders />}
+
+      {/* Navigation to your profile and reminder pages */}
+      <div className="flex justify-center gap-4 p-4">
+        <button onClick={() => navigate("profile")}
+          className="rounded-full bg-violet-600 px-5 py-3 font-bold text-white">
+          My Profile
+        </button>
+
+        <button onClick={() => navigate("reminders")}
+          className="rounded-full bg-violet-600 px-5 py-3 font-bold text-white">
+          Reminder Settings
+        </button>
+      </div>
+
+      <Footer navigate={navigate} />
+
+      {/* Existing stylist login stays unchanged */}
+      {loginRole && (
+        <LoginModal
+          initialRole={loginRole}
+          onClose={() => setLoginRole(null)}
+        />
+      )}
+    </div>
+  );
 }
